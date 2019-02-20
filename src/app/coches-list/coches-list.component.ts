@@ -12,7 +12,12 @@ export class CochesListComponent implements OnInit {
   constructor(private cocheService:CocheService) { }
 
   ngOnInit() {
-    this.coches = this.cocheService.getCoches()
+      this.cocheService.getCoches().subscribe(
+        // Dos maneras de hacerlo
+        //(result:any) =>{this.coches=result.data},
+        result =>{this.coches=result['data']},
+        error => {console.log('No se puede listar los datos' + error)}
+      )
 
   }
 

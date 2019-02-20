@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CocheService {
 
-  constructor() { }
+  url:string = 'http://localhost:7777'
+  constructor(private httpClient:HttpClient) { }
 
   getCoches(){
-    return [
-      {id:'1',nombre:'seat',modelo:'panda',precio:5000},
-      {id:'2',nombre:'seat',modelo:'ibiza',precio:7000},
-      {id:'3',nombre:'seat',modelo:'leon',precio:9000},
-      {id:'4',nombre:'tesla',modelo:'model-s',precio:100000},
-    ]
+    //  tambien se puede hacer asi y entonces quitas el any de la otra parte
+    //  this.httpClient.get<any>(this.url + '/coches')
+    return this.httpClient.get(this.url + '/coches')
 
   }
-  getCoche(idCoche){
-
+  getCoche(idCoche:string){
+    return this.httpClient.get<any>(this.url+'/coche/'+idCoche)
   }
   saveCoche(coche){
 
