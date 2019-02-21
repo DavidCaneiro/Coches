@@ -16,11 +16,12 @@ export class CocheDetalleComponent implements OnInit {
 
   ngOnInit() {
     // se pone snapshot
+    // asi se coje un parametro que te pasan
     let elId= this.activateRoute.snapshot.params['id']
     console.log(elId)
     this.cochesService.getCoche(elId).subscribe(
       result => {this.coche = result.data},
-      error =>{console.log('Fallo al leer el coche' + error)}
+      error =>{console.log(error)}
     )
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Coche } from '../models/Coche';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,22 @@ export class CocheService {
     return this.httpClient.get(this.url + '/coches')
 
   }
-  getCoche(idCoche:string){
+  getCoche(idCoche:String){
     return this.httpClient.get<any>(this.url+'/coche/'+idCoche)
   }
   saveCoche(coche){
+    const body = JSON.stringify(coche)
 
+    const headers = new HttpHeaders({'Content-type':'application/json'})
+    // URL = datos que van en el body = parametros y cabecera =headers
+    return this.httpClient.post(this.url + '/coche/',body,{headers:headers})
   }
-  updateCoche(idCoche,coche){
-
+  updateCoche(idCoche,coche:Coche){
+    const body = JSON.stringify(coche)
+    const headers = new HttpHeaders({'Content-type':'application/json'})
+    return this.httpClient.put(this.url +'/coche/'+idCoche,body,{headers:headers})
   }
-  deleteCoche(idCoche){
-
+  deleteCoche(idCoche:String){
+    return this.httpClient.delete(this.url +'/coche/'+idCoche)
   }
 }

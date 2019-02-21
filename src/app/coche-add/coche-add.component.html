@@ -1,0 +1,19 @@
+<h2>Creacion de nuevo coche</h2>
+<!--
+  Para usar form hay que importar FormsModule en app.module.ts
+-->
+<form (ngSubmit)='onSubmit()'> 
+<label for="nombre">Nombre</label>
+<input name="nombre" [(ngModel)]="coche.nombre">
+<br>
+<label for="modelo">Modelo</label>
+<input name="modelo" [(ngModel)]="coche.modelo">
+<br>
+<label for="precio">Precio</label>
+<input name="precio"[(ngModel)]="coche.precio">
+<br>
+
+<button type="submit">Crear coche</button>
+
+
+</form>

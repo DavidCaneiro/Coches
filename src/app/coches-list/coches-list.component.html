@@ -5,8 +5,8 @@
   <p>{{coche.modelo}}</p>
   <p>{{coche.precio}}</p>
   <a [routerLink]="['/coche',coche._id]" href="#">Ver detalles </a> |
-  <a href="#">Editar </a> |
-  <a href="#">Borrar </a> |
+  <a [routerLink]="['/update',coche._id]" href="#">Editar </a> |
+  <a (click)="borrarCoche(coche._id)" href="#">Borrar </a> |
   <hr>
 </div>
 
